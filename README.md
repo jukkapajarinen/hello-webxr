@@ -2,6 +2,14 @@
 
 My first app for WebXR with JavaScript using Parcel and Three.js.
 
+## How to run?
+
+1. Start development enviroment on computer with: `npm start`.
+2. Launch web browser in Meta Quest 2 and browse to: `https://<ip-address-of-computer>:1234`.
+3. Accept missing certs and press AR button to start the experience.
+4. Use Meta Quest 2 controller to insert "Jukka", "Kati" or "Aapo" to your world.
+
+
 ## License
 
 Copyright (c) 2022 Jukka Pajarinen
