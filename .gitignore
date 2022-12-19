@@ -1,0 +1,9 @@
+# OS files
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Project files
+.parcel-cache/
+dist/
+node_modules/
