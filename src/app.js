@@ -2,13 +2,9 @@ import * as THREE from 'three';
 import { ARButton } from 'three/examples/jsm/webxr/ARButton.js';
 import { createText } from 'three/examples/jsm/webxr/Text2D.js';
 
-let camera, scene, renderer;
-let controller;
+let camera, scene, renderer, controller;
 
-init();
-animate();
-
-function init() {
+const init = () => {
   const container = document.createElement( 'div' );
   document.body.appendChild( container );
   scene = new THREE.Scene();
@@ -22,7 +18,6 @@ function init() {
   renderer.xr.enabled = true;
   container.appendChild( renderer.domElement );
   document.body.appendChild( ARButton.createButton( renderer ) );
-  const geometry = new THREE.CylinderGeometry( 0, 0.05, 0.2, 32 ).rotateX( Math.PI / 2 );
   controller = renderer.xr.getController( 0 );
   controller.addEventListener( 'select', () => {
     const text = createText(["Jukka", "Kati", "Aapo"][Math.floor((Math.random() * 3))], 0.1 );
@@ -34,16 +29,15 @@ function init() {
   window.addEventListener( 'resize', onWindowResize );
 }
 
-function onWindowResize() {
+const animate = () => {
+  renderer.setAnimationLoop(() => renderer.render( scene, camera ));
+}
+
+const onWindowResize = () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-function animate() {
-  renderer.setAnimationLoop( render );
-}
-
-function render() {
-  renderer.render( scene, camera );
-}
+init();
+animate();
